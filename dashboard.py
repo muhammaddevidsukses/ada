@@ -7,7 +7,7 @@ import matplotlib.dates as mdates
 
 plt.style.use("seaborn")
 st.set_page_config(
-    page_title="Akibat Pandemi, Pekerja Anak di Indonesia Makin Banyak!",
+    page_title="Penduduk Berumur 10 Tahun ke Atas yang Buta Huruf",
     # layout="wide"
 )
 
@@ -36,29 +36,24 @@ name.markdown("<p class='date'>10 juni 2023</p>", unsafe_allow_html=True)
 
 "---"
 
-st.title("Akibat Pandemi, Pekerja Anak di Indonesia Makin Banyak!")
+st.title("Penduduk Berumur 10 Tahun ke Atas yang Buta Huruf!")
 
 st.write(
     """
-        Anak bangsa merupakan masa depan dari negara ini dan semua pihak wajib menjamin pemenuhan HAM mereka. Kenyataannya,
-        angka pekerja anak di Indonesia hingga kini masih memprihatinkan.
-        
-        Anak-anak hingga usia 18 tahun memiliki hak bersekolah untuk memperoleh pendidikan.
-        Namun, banyak dari mereka terpaksa harus bekerja untuk membantu orang tua atau memenuhi kebutuhan hidupnya.
+        Setiap individu memiliki hak yang sama untuk mendapatkan pendidikan dan mengembangkan kemampuan literasi. Buta huruf dapat menghambat seseorang dalam mengakses informasi, memperoleh pekerjaan yang layak, dan berpartisipasi secara aktif dalam masyarakat. Oleh karena itu, adalah tanggung jawab kita untuk memastikan bahwa penduduk berumur 10 tahun ke atas yang masih buta huruf mendapatkan kesempatan yang setara untuk belajar.
     """
 )
 st.info(
-    "***UU No. 13 Tahun 2003** tentang Ketenagakerjaan menegaskan bahwa pengusaha dilarang mempekerjakan anak yang berusia kurang dari **18 tahun**.*"
+    "***Undang-Undang Nomor 20 Tahun 2003 tentang Sistem Pendidikan Nasional, mengatur sistem pendidikan di Indonesia. Salah satu tujuan undang-undang ini adalah memberikan pendidikan yang berkualitas dan merata kepada seluruh warga negara, termasuk mereka yang buta huruf.*.*"
 )
 st.write(
     """
-        Berdasarkan data dari BPS, pada tahun **2020**, penduduk usia **10-17** tahun yang menjadi pekerja di tanah air sebesar **1,17 juta** anak,
-        naik **320 ribu** anak dibandingkan pada tahun sebelumnya **(⬆️38% dari 2019)**.
+   Mengacu pada hasil Survey Sosial Ekonomi Nasional (Susenas) tahun 2021, angka buta aksara di Indonesia tinggal 1,56 persen atau 2,7 juta orang**.
     """
 )
 
 st.markdown(
-    "<h3>Persentase anak usia 10-17 tahun yang bekerja</h3>", unsafe_allow_html=True
+    "<h3>Persentase anak usia 10 tahun ke atas buta huruf</h3>", unsafe_allow_html=True
 )
 labor_area, labor_gender = st.tabs(["Berdasarkan Area", "Berdasarkan Jenis Kelamin"])
 
@@ -245,11 +240,7 @@ with labor_gender:
 
 st.write(
     """
-        Terdapat kenaikan pesat pada tahun **2020** dimana pandemi dimulai.
-        Faktor penyebabnya bermacam-macam dan dalam kasus ini,
-        diduga pandemi adalah penyebab terbesarnya.
-        Dalam skala nasional, pada tahun **2021**, memang jumlah tersebut sedikit turun dari tahun sebelumnya, dari **1,17 juta** menjadi sebanyak **940 ribu** pekerja anak, masih sedikit lebih tinggi dari tahun-tahun sebelum pandemi.
-        Tetapi jika kita lihat pada beberapa daerah di provinsi-provinsi ini, persentase pekerja anak pada 2021 masih jauh lebih tinggi dibandingkan dengan sebelum pandemi. Bahkan jika kita lihat data di **Kalimantan Utara** dan **Sulawesi Barat**, angkanya masih **naik** terus hingga **2021**.
+        Kurangnya akses pendidikan: Beberapa penduduk mungkin tidak memiliki akses ke fasilitas pendidikan yang memadai karena keterbatasan geografis, ekonomi, atau sosial. Mereka mungkin tinggal di daerah terpencil, daerah miskin, atau terkena konflik yang menghambat akses mereka ke pendidikan formal.**.
     """
 )
 
@@ -274,9 +265,8 @@ st.pyplot(fig)
 
 st.write(
     """
-            Berdasarkan data peringkat diatas, daerah **Sulawesi Tenggara** memiliki persentase pekerja anak tertinggi di Indonesia.
-            4 daerah dari 5 daerah yang memiliki persentase pekerja anak tertinggi merupakan daerah dari provinsi **Sulawesi**.
-            Hal ini menunjukkan **Sulawesi** memerlukan perhatian khusus dari pemerintah untuk menurunkan angka pekerja anak.
+            Berdasarkan data peringkat diatas, daerah **Papua** memiliki persentase buta huruf tertinggi di Indonesia.
+            Hal ini menunjukkan **Papua** memerlukan perhatian khusus dari pemerintah untuk menurunkan angka buta huruf.
          """
 )
 
@@ -308,17 +298,14 @@ col2.markdown(
 )
 col2.write(
     """
-        Kenaikan tertinggi terjadi pada usia **10-12 tahun (⬆️ 97% dari 2019)**.
-        Angka pekerja anak pada usia **13-14 tahun** juga mengalami kenaikan yang cukup tinggi **(⬆️ 61% dari 2019)**.
-        Sedangkan angka pekerja anak pada usia **15-17 tahun** mengalami penurunan sedikit **(🔻7.5% dari 2019)**.
+        
     """
 )
 
-st.markdown("<h3>Sisi Gelap Pekerja Anak...</h3>", unsafe_allow_html=True)
+st.markdown("<h3>Sisi Gelap buta huruf Anak...</h3>", unsafe_allow_html=True)
 st.write(
     """
-        Pekerja anak berisiko **putus sekolah** dan masuk dalam situasi-situasi yang membahayakan diri sehingga mengancam mereka bertumbuh secara optimal,
-        seperti terlibat dalam **kekerasan**.
+       Keterbatasan pendidikan: Anak-anak yang buta huruf menghadapi keterbatasan dalam mengakses pendidikan. Mereka tidak dapat membaca, menulis, atau menghitung dengan baik, yang membatasi kesempatan mereka untuk belajar dan berkembang secara penuh. Keterbatasan ini dapat menghambat kemajuan akademik mereka dan membatasi pilihan pendidikan di masa depan.
     """
 )
 
@@ -349,8 +336,7 @@ with status_sekolah:
     st.pyplot(fig)
     st.write(
         """
-            Status akademis pekerja anak didominasi oleh anak-anak yang sudah tidak bersekolah lagi **(15.83% pada tahun 2020 dan 15.03% pada tahun 2021)**.
-            Hal ini membuktikan bahwa pekerja anak cenderung putus sekolah.
+       
         """
     )
 
@@ -394,8 +380,7 @@ with kekerasan_anak:
     with kekerasan_desc_col:
         st.write(
             """
-                Sama seperti kenaikan pada pekerja anak, Terjadi kenaikan drastis pada kekerasan anak di Indonesia pada tahun **2020** dimana pandemi dimulai.
-                Jumlah kasus kekerasan anak **berkorelasi tinggi** dengan persentase angka pekerja anak.
+   
             """
         )
     with kekerasan_corr_col:
@@ -406,10 +391,5 @@ with kekerasan_anak:
 
 st.markdown("<h3>Solusi/Saran</h3>", unsafe_allow_html=True)
 """
-- Provinsi Sulawesi merupakan provinsi dengan persentase pekerja anak tertinggi. Oleh karena itu, Sulawesi memerlukan perhatian khusus dari Pemerintah.
-- Perhatian khusus tersebut bisa dalam bentuk:
-	- Beasiswa kepada keluarga-keluarga kurang mampu.
-	- Sosialisasi
-		- Sekolah itu baik untuk jangka panjang.
-		- Mampu memperbaiki nasib keturunan.
+
 """
