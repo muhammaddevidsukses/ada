@@ -68,9 +68,9 @@ index=len(anak_buta.columns.unique()) - 1,
     )
 fig, ax = plt.subplots(figsize=(10, 5))
 anak_buta[area].plot(marker="o", ax=ax)
-# create a seperator before and after 2020
+# create a seperator before and after 2017
 plt.axvline(
-    x="206",
+    x="2016",
     color="red",
     linestyle="--")
 fill_thresholds_min, fill_thresholds_max = (
