@@ -71,41 +71,33 @@ def plot_labor_area(area, ax):
         [""] + sorted(pers_buta_huruf_tmp.tahun.dt.strftime("%Y-%b"))
     )
     # create a seperator before and after 2020
-    plt.axvline(x=pd.to_datetime("2020-03-02"), color="red", linestyle="--")
-    fill_thresholds_min, fill_thresholds_max = (
-        np.min(ax.get_yticks()) - 0.2,
-        np.max(ax.get_yticks()) + 0.2,
-    )
-    ax.fill_between(
-        ["2018-12-31", "2020-03-02"],
-        fill_thresholds_min,
-        fill_thresholds_max,
-        color="green",
-        alpha=0.2,
-    )
-    ax.fill_between(
-        ["2020-03-02", "2021-12-31"],
-        fill_thresholds_min,
-        fill_thresholds_max,
-        color="red",
-        alpha=0.2,
-    )
-    ax.text(
-        pd.to_datetime("2020-04"), fill_thresholds_max - 0.2, "Pandemi", style="italic"
-    )
-    ax.text(
-        pd.to_datetime("2019"),
-        fill_thresholds_max - 0.2,
-        "Sebelum Pandemi",
-        style="italic",
-    )
-    plt.ylim(fill_thresholds_min, fill_thresholds_max)
-    for i, row in pers_buta_huruf_tmp.iterrows():
-        ax.text(
-            row["tahun"], row["persentase"] + 0.05, row["persentase"], style="italic"
-        )
-    plt.ylabel("%")
-    plt.annotate(
+   plt.axvline(x=pd.to_datetime("2015-03-02"), color="red", linestyle="--")
+fill_thresholds_min, fill_thresholds_max = (
+    np.min(ax.get_yticks()) - 0.2,
+    np.max(ax.get_yticks()) + 0.2,
+)
+ax.fill_between(
+    ["2016-12-31", "2015-12-02"],
+    fill_thresholds_min,
+    fill_thresholds_max,
+    color="green",
+    alpha=0.2,
+)
+ax.fill_between(
+    ["2015-03-02", "2016-12-31"],
+    fill_thresholds_min,
+    fill_thresholds_max,
+    color="red",
+    alpha=0.2,
+)
+ax.text(pd.to_datetime("2015-04"), fill_thresholds_max - 0.2, "awal", style="italic")
+ax.text(
+    pd.to_datetime("2016"), fill_thresholds_max - 0.2, "akhir", style="italic"
+)
+plt.ylim(fill_thresholds_min, fill_thresholds_max)
+plt.ylabel("%")
+plt.show()
+plt.annotate(
         "Sumber: Badan Pusat Statistik (BPS)",
         (0, 0),
         (0, -35),
