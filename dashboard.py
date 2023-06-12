@@ -57,19 +57,18 @@ st.markdown(
     "<h3>Persentase anak usia 10 tahun ke atas buta huruf</h3>", unsafe_allow_html=True)
 
 labor_area, labor_gender = st.tabs(["Berdasarkan Area", "Berdasarkan Jenis Kelamin"])
-
 with labor_area:
-    pers_buta_huruf = pd.read_csv("data/buta_labor_cleaned/anak_buta.csv")
-    pers_buta_huruf["tahun"] = pd.to_datetime(pers_buta_huruf["tahun"].astype(str))
-    pers_buta_huruf.set_index("tahun", inplace=True)
+    anak_buta = pd.read_csv("data/buta_labor_cleaned/anak_buta.csv")
+    anak_buta["tahun"] = pd.to_datetime(anak_buta["tahun"].astype(str))
+    anak_buta.set_index("tahun", inplace=True)
     area = st.selectbox(
         "Pilih Area",
-        pers_buta_huruf.columns.unique(),
-        index=len(pers_buta_huruf.columns.unique()) - 1,
+        anak_buta.columns.unique(),
+        index=len(anak_buta.columns.unique()) - 1,
     )
 
     fig, ax = plt.subplots(figsize=(10, 5))
-    pers_buta_huruf[area].plot(marker="o", ax=ax)
+    anak_buta[area].plot(marker="o", ax=ax)
     # create a seperator before and after 2020
     plt.axvline(x="206", color="red", linestyle="--")
     fill_thresholds_min, fill_thresholds_max = (
@@ -77,14 +76,14 @@ with labor_area:
         np.max(ax.get_yticks()) + 0.2,
     )
     ax.fill_between(
-        pers_anak_kerja.index[:3],
+        anak_buta.index[:3],
         fill_thresholds_min,
         fill_thresholds_max,
         color="green",
         alpha=0.2,
     )
     ax.fill_between(
-        pers_anak_kerja.index[2:],
+        anak_buta.index[2:],
         fill_thresholds_min,
         fill_thresholds_max,
         color="red",
@@ -92,7 +91,7 @@ with labor_area:
     )
     ax.text("2017", fill_thresholds_max - 0.15, "sesusah", style="italic")
     ax.text("2016", fill_thresholds_max - 0.15, "Sebelum ", style="italic")
-    for i, value in enumerate(pers_buta_huruf[area]):
+    for i, value in enumerate(anak_buta[area]):
         ax.text(pers_buta_huruf.index[i], value + 0.05, value, style="italic")
     plt.ylabel("%")
     plt.annotate(
@@ -107,14 +106,14 @@ with labor_area:
     st.pyplot(fig)
 
 with labor_gender:
-    pers_buta_huruf_gender = pd.read_csv("ddata/buta_labor_cleaned/pers_anak_buta_gender.csv")
-    pers_buta_huruf_gender["tahun"] = pd.to_datetime(
-        pers_buta_huruf_gender["tahun"].astype(str)
+    anak_buta_gender = pd.read_csv("ddata/buta_labor_cleaned/pers_anak_buta_gender.csv")
+    anak_buta_gender["tahun"] = pd.to_datetime(
+    anak_buta_gender["tahun"].astype(str)
     )
-    pers_buta_huruf_gender.set_index("tahun", inplace=True)
+    anak_buta_gender.set_index("tahun", inplace=True)
     fig, ax = plt.subplots(figsize=(10, 5))
-    pers_buta_huruf_gender["Laki-laki"].plot(marker="o", color="b", ax=ax)
-    pers_buta_huruf_gender["Perempuan"].plot(marker="o", color="r", ax=ax)
+    anak_buta_gender["Laki-laki"].plot(marker="o", color="b", ax=ax)
+    anak_buta_gender["Perempuan"].plot(marker="o", color="r", ax=ax)
     # create a seperator before and after 2017
     plt.axvline(x="2016", color="red", linestyle="--")
     fill_thresholds_min, fill_thresholds_max = (
@@ -122,14 +121,14 @@ with labor_gender:
         np.max(ax.get_yticks()) + 0.2,
     )
     ax.fill_between(
-        pers_buta_huruf.index[:3],
+        anak_buta.index[:3],
         fill_thresholds_min,
         fill_thresholds_max,
         color="green",
         alpha=0.2,
     )
     ax.fill_between(
-        pers_anak_kerja.index[2:],
+        anak_buta.index[2:],
         fill_thresholds_min,
         fill_thresholds_max,
         color="red",
@@ -139,13 +138,13 @@ with labor_gender:
     # create text top left
     ax.text("2020", 3.6, "sesudah", style="italic")
     ax.text("2019", 3.6, "Sebelum ", style="italic")
-    for i, value in enumerate(pers_buta_huruf_gender["Laki-laki"]):
+    for i, value in enumerate(anak_buta_gender["Laki-laki"]):
         ax.text(
-            pers_buta_huruf.index[i], value + 0.05, value, style="italic", color="blue"
+            anak_buta.index[i], value + 0.05, value, style="italic", color="blue"
         )
-    for i, value in enumerate(pers_buta_huruf_gender["Perempuan"]):
+    for i, value in enumerate(anak_buta_gender["Perempuan"]):
         ax.text(
-            pers_anak_kerja.index[i], value - 0.15, value, style="italic", color="red"
+            anak_buta.index[i], value - 0.15, value, style="italic", color="red"
         )
     plt.ylabel("%")
     plt.annotate(
