@@ -61,9 +61,9 @@ st.markdown(
     "<h3>Persentase anak usia 10 tahun ke atas buta huruf</h3>", unsafe_allow_html=True
 )
 
-
-pers_buta_huruf_provinsi = pd.read_excel(
-    "data/buta_labor/buta_huruf_provinsi.xlsx"
+fig, ax = plt.subplots(figsize=(10, 3))
+pers_buta_huruf_provinsi = pd.read_csv(
+    "data/buta_labor/cleaned/pers_buta_huruf_provinsi_rank.csv"
 )
 sns.barplot(x="provinsi", y="persentase", data=pers_buta_huruf_provinsi, palette="Blues_d")
 plt.xticks(rotation=90)
