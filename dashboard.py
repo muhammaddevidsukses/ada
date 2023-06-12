@@ -60,6 +60,7 @@ st.write(
 st.markdown(
     "<h3>Persentase anak usia 10 tahun ke atas buta huruf</h3>", unsafe_allow_html=True)
 pers_buta_huruf_jenis = pd.read_csv("data/buta_labor_cleaned/pers_buta_huruf_jenis.csv")
+pers_buta_huruf_jenis.head()
 pers_anak_laki = pers_buta_huruf_jenis_melted[pers_buta_huruf_jenis_melted["gender"] == "Laki-laki"]
 pers_anak_perempuan = pers_buta_huruf_jenis_melted[pers_buta_huruf_jenis_melted["gender"] == "Perempuan"]
 ax = sns.lineplot(
