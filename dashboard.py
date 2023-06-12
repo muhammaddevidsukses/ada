@@ -137,29 +137,29 @@ anak_buta.index[2:],
         color="red",
         alpha=0.2,
     )
-    ax.legend(["Laki-laki", "Perempuan"])
-    # create text top left
-    ax.text("2020", 3.6, "sesudah", style="italic")
-    ax.text("2019", 3.6, "Sebelum ", style="italic")
-    for i, value in enumerate(anak_buta_gender["Laki-laki"]):
-        ax.text(
-            anak_buta.index[i], value + 0.05, value, style="italic", color="blue"
+ax.legend(["Laki-laki", "Perempuan"])
+# create text top left
+ax.text("2017", 3.6, "sesudah", style="italic")
+ax.text("2015", 3.6, "Sebelum ", style="italic")
+for i, value in enumerate(anak_buta_gender["Laki-laki"]):
+ax.text(
+anak_buta.index[i], value + 0.05, value, style="italic", color="blue"
         )
-    for i, value in enumerate(anak_buta_gender["Perempuan"]):
-        ax.text(
-            anak_buta.index[i], value - 0.15, value, style="italic", color="red"
+for i, value in enumerate(anak_buta_gender["Perempuan"]):
+ax.text(
+ anak_buta.index[i], value - 0.15, value, style="italic", color="red"
         )
-    plt.ylabel("%")
-    plt.annotate(
-        "Sumber: Badan Pusat Statistik (BPS)",
-        (0, 0),
-        (0, -35),
-        fontsize=10,
-        xycoords="axes fraction",
-        textcoords="offset points",
-        va="top",
+plt.ylabel("%")
+plt.annotate(
+"Sumber: Badan Pusat Statistik (BPS)",
+(0, 0),
+(0, -35),
+fontsize=10,
+xycoords="axes fraction",
+textcoords="offset points",
+va="top",
     )
-    st.pyplot(fig)
+st.pyplot(fig)
 
 
 
