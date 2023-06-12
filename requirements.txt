@@ -1,6 +1,4 @@
-altair
 pandas
 streamlit
 numpy
-seaborn
-matplotlib
+
