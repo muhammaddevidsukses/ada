@@ -322,7 +322,7 @@ status_sekolah, kekerasan_anak = st.tabs(["Status Sekolah", "Kekerasan Anak"])
 with status_sekolah:
     fig, ax = plt.subplots(figsize=(10, 5))
     pekerja_anak_sekolah = pd.read_excel(
-        "data//buta_labor/buta_huruf_provinsi.xlsx"
+        "data/buta_labor/buta_huruf_provinsi.xlsx"
     )
     sns.barplot(data=pekerja_anak_sekolah, x="status", y="persentase", hue="tahun", palette="Greens_d")
     plt.xticks(rotation=0)
@@ -352,7 +352,7 @@ with status_sekolah:
 with kekerasan_anak:
     fig, ax = plt.subplots(figsize=(10, 5))
     kekerasan_anak_per_tahun = pd.read_csv(
-        "data/child_labor_cleaned/kekerasan_anak_per_tahun.csv"
+        "data/buta_labor_cleaned/pers_buta_huruf_provinsi_rank.csv"
     )
     kekerasan_anak_per_tahun["tahun"] = pd.to_datetime(
         kekerasan_anak_per_tahun["tahun"].astype(str)
