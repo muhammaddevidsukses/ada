@@ -59,14 +59,13 @@ st.markdown(
 labor_area, labor_gender = st.tabs(["Berdasarkan Area", "Berdasarkan Jenis Kelamin"])
 
 with labor_area:anak_buta = pd.read_csv("data/buta_labor_cleaned/anak_buta.csv")
-    anak_buta["tahun"] = pd.to_datetime(anak_buta["tahun"].astype(str))
+ anak_buta["tahun"] = pd.to_datetime(anak_buta["tahun"].astype(str))
     anak_buta.set_index("tahun", inplace=True)
     area = st.selectbox(
         "Pilih Area",
         anak_buta.columns.unique(),
         index=len(anak_buta.columns.unique()) - 1,
     )
-
     fig, ax = plt.subplots(figsize=(10, 5))
     anak_buta[area].plot(marker="o", ax=ax)
     # create a seperator before and after 2020
