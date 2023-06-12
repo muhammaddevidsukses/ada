@@ -59,46 +59,63 @@ st.write(
 
 st.markdown(
     "<h3>Persentase anak usia 10 tahun ke atas buta huruf</h3>", unsafe_allow_html=True)
-fig, ax = plt.subplots(figsize=(10, 3))
-pers_buta_huruf_provinsi = pd.read_csv("data/child_labor_cleaned/pers_buta_huruf_provinsi_rank.csv")
-sns.barplot(x="provinsi", y="persentase", data=pers_buta_huruf_provinsi_rank, palette="Blues_d")
-plt.xticks(rotation=90)
-plt.title("Peringkat Provinsi Anak Usia 10 yang buta huruf")
-plt.ylabel("%")
-for i in ax.containers:
-    ax.bar_label(i, fontsize=8)
-plt.annotate(
-    "Sumber: Badan Pusat Statistik (BPS)",
-    (0, 0),
-    (0, -150),
-    fontsize=10,
-    xycoords="axes fraction",
-    textcoords="offset points",
-    va="top",
+pers_buta_huruf_jenis = pd.read_csv("data/buta_labor_cleaned/pers_buta_huruf_jenis.csv")
+pers_anak_laki = pers_buta_huruf_jenis_melted[pers_buta_huruf_jenis_melted["gender"] == "Laki-laki"]
+pers_anak_perempuan = pers_buta_huruf_jenis_melted[pers_buta_huruf_jenis_melted["gender"] == "Perempuan"]
+ax = sns.lineplot(
+    x="tahun",
+    y="persentase",
+    data=pers_anak_laki,
+    marker="o",
+    color="b",
+    
 )
-st.pyplot(fig)
-
-col1, col2 = st.columns([3, 2])
-fig, ax = plt.subplots(figsize=(7, 4))
-angka_buta_anak_2016 = pd.read_csv(
-    "data/child_labor_cleaned/pers_buta_huruf_provinsi_rank.csv"
+sns.lineplot(
+    x="tahun",
+    y="persentase",
+    data=pers_anak_perempuan,
+    marker="o",
+    color="r",
+    ax=ax,
 )
-angka_buta_anak_2016.set_index("tahun", inplace=True)
-angka_buta_anak_2016.plot(kind="bar", ax=ax)
-plt.ylabel("%")
-for i in ax.containers:
-    ax.bar_label(
-        i,
+ax.xaxis.set_major_locator(mdates.YearLocator())
+ax.xaxis.set_ticklabels(
+    [""]
+    + sorted(
+        pers_anak_laki.tahun.dt.strftime("%y-%b")
     )
-plt.annotate(
-    "Sumber: Badan Pusat Statistik (BPS)",
-    (0, 0),
-    (0, -50),
-    fontsize=10,
-    xycoords="axes fraction",
-    textcoords="offset points",
-    va="top",
+    + sorted(
+        pers_anak_perempuan.tahun.dt.strftime("%y-%b")
+    )
 )
+# create a seperator before and after 2017
+plt.axvline(x=pd.to_datetime("2016-03-02"), color="red", linestyle="--")
+fill_thresholds_min, fill_thresholds_max = (
+    np.min(ax.get_yticks()) - 0.2,
+    np.max(ax.get_yticks()) + 0.2,
+)
+ax.fill_between(
+    ["2014-12-31", "2016-03-02"],
+    fill_thresholds_min,
+    fill_thresholds_max,
+    color="green",
+    alpha=0.2,
+)
+ax.fill_between(
+    ["2016-03-02", "2017-12-31"],
+    fill_thresholds_min,
+    fill_thresholds_max,
+    color="red",
+    alpha=0.2,
+)
+ax.text(pd.to_datetime("2014-12"), fill_thresholds_max - 0.2, "sesudah", style="italic")
+ax.text(
+    pd.to_datetime("2016"), fill_thresholds_max - 0.2, "Sebelum ", style="italic"
+)
+plt.ylim(fill_thresholds_min, fill_thresholds_max)
+plt.ylabel("%")
+plt.show()
+
 col1.pyplot(fig)
 
 col2.markdown(
