@@ -112,20 +112,19 @@ va="top",
 st.pyplot(fig)
 
 with labor_gender:anak_buta_gender= pd.read_csv("ddata/buta_labor_cleaned/pers_anak_buta_gender.csv")
-    anak_buta_gender["tahun"] = pd.to_datetime(anak_buta_gender["tahun"].astype(str)
+anak_buta_gender["tahun"] = pd.to_datetime(anak_buta_gender["tahun"].astype(str))
+anak_buta_gender.set_index("tahun", inplace=True)
+fig, ax = plt.subplots(figsize=(10, 5))
+anak_buta_gender["Laki-laki"].plot(marker="o", color="b", ax=ax)
+anak_buta_gender["Perempuan"].plot(marker="o", color="r", ax=ax)
+# create a seperator before and after 2017
+plt.axvline(x="2016", color="red", linestyle="--")
+fill_thresholds_min, fill_thresholds_max = (
+np.min(ax.get_yticks()) - 0.2,
+np.max(ax.get_yticks()) + 0.2,
     )
-    anak_buta_gender.set_index("tahun", inplace=True)
-    fig, ax = plt.subplots(figsize=(10, 5))
-    anak_buta_gender["Laki-laki"].plot(marker="o", color="b", ax=ax)
-    anak_buta_gender["Perempuan"].plot(marker="o", color="r", ax=ax)
-    # create a seperator before and after 2017
-    plt.axvline(x="2016", color="red", linestyle="--")
-    fill_thresholds_min, fill_thresholds_max = (
-        np.min(ax.get_yticks()) - 0.2,
-        np.max(ax.get_yticks()) + 0.2,
-    )
-    ax.fill_between(
-        anak_buta.index[:3],
+ax.fill_between(
+anak_buta.index[:3],
         fill_thresholds_min,
         fill_thresholds_max,
         color="green",
