@@ -177,6 +177,33 @@ st.pyplot(fig)
 col1, col2 = st.columns([3, 2])
 fig, ax = plt.subplots(figsize=(7, 4))
 
+#grafik batang
+
+angka_buta_huruf = pd.read_csv(
+    "data/child_labor_cleaned/angka_buta_huruf.csv"
+)
+angka_buta_huruf.set_index("tahun", inplace=True)
+angka_buta_huruf.plot(kind="bar", ax=ax)
+plt.ylabel("%")
+for i in ax.containers:
+    ax.bar_label(
+        i,
+    )
+plt.annotate(
+    "Sumber: Badan Pusat Statistik (BPS)",
+    (0, 0),
+    (0, -50),
+    fontsize=10,
+    xycoords="axes fraction",
+    textcoords="offset points",
+    va="top",
+)
+col1.pyplot(fig)
+col2.markdown(
+    "<h5>Kenaikan Angka Pekerja Anak Usia 10-17 Tahun Yang Bekerja Berdasarkan Kelompok Umur</h5>",
+    unsafe_allow_html=True,
+)
+
 st.markdown("<h3>Sisi Gelap buta huruf Anak...</h3>", unsafe_allow_html=True)
 st.write(
     """
