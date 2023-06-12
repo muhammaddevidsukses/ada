@@ -68,9 +68,9 @@ index=len(anak_buta.columns.unique()) - 1,
     )
 fig, ax = plt.subplots(figsize=(10, 5))
 anak_buta[area].plot(marker="o", ax=ax)
-# create a seperator before and after 2017
+# create a seperator before and after 2016
 plt.axvline(
-    x="2016",
+    x="2015",
     color="red",
     linestyle="--")
 fill_thresholds_min, fill_thresholds_max = (
@@ -117,8 +117,8 @@ anak_buta_gender.set_index("tahun", inplace=True)
 fig, ax = plt.subplots(figsize=(10, 5))
 anak_buta_gender["Laki-laki"].plot(marker="o", color="b", ax=ax)
 anak_buta_gender["Perempuan"].plot(marker="o", color="r", ax=ax)
-# create a seperator before and after 2017
-plt.axvline(x="2016", color="red", linestyle="--")
+# create a seperator before and after 2016
+plt.axvline(x="2015", color="red", linestyle="--")
 fill_thresholds_min, fill_thresholds_max = (
 np.min(ax.get_yticks()) - 0.2,
 np.max(ax.get_yticks()) + 0.2,
