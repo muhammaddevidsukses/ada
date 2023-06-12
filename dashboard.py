@@ -1,12 +1,8 @@
-from collections import namedtuple
-import altair as alt
-import math
 import streamlit as st
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-import matplotlib.dates as mdates
 
 plt.style.use("seaborn")
 st.set_page_config(
