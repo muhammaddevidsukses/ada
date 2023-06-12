@@ -373,17 +373,15 @@ with kekerasan_anak:
         va="top",
     )
     st.pyplot(fig)
-    kekerasan_desc_col, kekerasan_corr_col = st.columns([4, 1])
-    pers_buta_huruf_indo = pers_buta_huruf[
-        pers_buta_huruf["provinsi"] == "INDONESIA"
-    ].sort_values(by="tahun")
+   kekerasan_desc_col, kekerasan_corr_col = st.columns([4, 1])
+   pers_buta_huruf_indo = pers_buta_huruf[pers_buta_huruf["provinsi"] == "INDONESIA"].sort_values(by="tahun")
    pers_buta_huruf_indo["tahun"] = pers_buta_huruf_indo.tahun.dt.year
-    pers_buta_huruf_indo["tahun"] = pd.to_datetime(
+   pers_buta_huruf_indo["tahun"] = pd.to_datetime(
         pers_buta_huruf_indo["tahun"].astype(str)
     )
-    pers_buta_huruf_indo.set_index("tahun", inplace=True)
-    kekerasan_corr = pers_buta_huruf_indo["persentase"].corr(
-        kekerasan_anak_per_tahun["total"]
+   pers_buta_huruf_indo.set_index("tahun", inplace=True)
+  kekerasan_corr = pers_buta_huruf_indo["persentase"].corr(
+   pers_buta_huruf_per_tahun["total"]
     )
 
     with kekerasan_desc_col:
