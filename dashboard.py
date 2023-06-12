@@ -152,11 +152,7 @@ va="top",
     )
 st.pyplot(fig)
 
-
-
-col1.pyplot(fig)
-
-col2.markdown(
+col1.markdown(
     "<h5>Persentase Pekerja Anak Usia 10 yang buta huruf</h5>",
     unsafe_allow_html=True,
 )
