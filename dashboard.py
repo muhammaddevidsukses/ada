@@ -112,7 +112,7 @@ va="top",
 st.pyplot(fig)
 
 with labor_gender:
-    anak_buta_gender = pd.read_csv("ddata/buta_labor_cleaned/pers_anak_buta_gender.csv")
+anak_buta_gender = pd.read_csv("ddata/buta_labor_cleaned/pers_anak_buta_gender.csv")
     anak_buta_gender["tahun"] = pd.to_datetime(
     anak_buta_gender["tahun"].astype(str)
     )
