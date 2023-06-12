@@ -62,9 +62,7 @@ st.markdown(
 )
 
 fig, ax = plt.subplots(figsize=(10, 3))
-pers_buta_huruf_provinsi = pd.read_csv(
-    "data/buta_labor/cleaned/pers_buta_huruf_provinsi_rank.csv"
-)
+pers_buta_huruf_provinsi = pd.read_csv("data/buta_labor/cleaned/pers_buta_huruf_provinsi_rank.csv")
 sns.barplot(x="provinsi", y="persentase", data=pers_buta_huruf_provinsi, palette="Blues_d")
 plt.xticks(rotation=90)
 plt.show()
