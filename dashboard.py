@@ -141,9 +141,7 @@ ax.legend(["Laki-laki", "Perempuan"])
 # create text top left
 ax.text("2017", 3.6, "sesudah", style="italic")
 ax.text("2015", 3.6, "Sebelum ", style="italic")
-for i, value in enumerate(anak_buta_gender["Laki-laki"]):
-ax.text(
-anak_buta.index[i], value + 0.05, value, style="italic", color="blue"
+for i, value in enumerate(anak_buta_gender["Laki-laki"]):ax.text(anak_buta.index[i], value + 0.05, value, style="italic", color="blue"
         )
 for i, value in enumerate(anak_buta_gender["Perempuan"]):
 ax.text(
