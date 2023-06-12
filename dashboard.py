@@ -131,12 +131,7 @@ anak_buta.index[:3],
         alpha=0.2,)
 
 
-anak_buta.index[2:],
-        fill_thresholds_min,
-        fill_thresholds_max,
-        color="red",
-        alpha=0.2,
-    )
+
 ax.legend(["Laki-laki", "Perempuan"])
 # create text top left
 ax.text("2017", 3.6, "sesudah", style="italic")
