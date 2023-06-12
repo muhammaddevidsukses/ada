@@ -111,7 +111,7 @@ with labor_area:
     st.pyplot(fig)
 
 with labor_gender:
-    pers_buta_huruf_gender = pd.read_csv("ddata/buta_labor_cleaned/pers_buta_huruf_jenis.csv")
+    pers_buta_huruf_gender = pd.read_csv("ddata/buta_labor_cleaned/pers_anak_buta_gender.csv")
     pers_buta_huruf_gender["tahun"] = pd.to_datetime(
         pers_buta_huruf_gender["tahun"].astype(str)
     )
