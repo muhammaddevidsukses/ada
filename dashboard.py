@@ -62,7 +62,7 @@ with labor_area:anak_buta = pd.read_csv("data/buta_labor_cleaned/anak_buta.csv")
 anak_buta["tahun"] = pd.to_datetime(anak_buta["tahun"].astype(str))
 anak_buta.set_index("tahun", inplace=True)
 area = st.selectbox(
-"Pilih Area"
+"Pilih Area",
 anak_buta.columns.unique(),
 index=len(anak_buta.columns.unique()) - 1,
     )
@@ -110,8 +110,7 @@ textcoords="offset points",
 va="top",
     )
 st.pyplot(fig)
-
-with labor_gender:anak_buta_gender= pd.read_csv("data/buta_labor_cleaned/pers_anak_buta_gender.csv")
+with labor_gender: anak_buta_gender= pd.read_csv("data/buta_labor_cleaned/pers_anak_buta_gender.csv")
 anak_buta_gender["tahun"] = pd.to_datetime(anak_buta_gender["tahun"].astype(str))
 anak_buta_gender.set_index("tahun", inplace=True)
 fig, ax = plt.subplots(figsize=(10, 5))
