@@ -60,17 +60,24 @@ st.write(
 st.markdown(
     "<h3>Persentase anak usia 10 tahun ke atas buta huruf</h3>", unsafe_allow_html=True
 )
-labor_area, labor_gender = st.tabs(["Berdasarkan Area", "Berdasarkan Jenis Kelamin"])
-
-
-def plot_labor_area(area, ax):
-    pers_buta_huruf_tmp = pers_buta_huruf[pers_buta_huruf["provinsi"] == area]
-    sns.lineplot(x="tahun", y="persentase", data=pers_buta_huruf_tmp, marker="o", ax=ax)
-    ax.xaxis.set_major_locator(mdates.YearLocator())
-    ax.xaxis.set_ticklabels(
-        [""] + sorted(pers_buta_huruf_tmp.tahun.dt.strftime("%Y-%b"))
+pers_buta_huruf_indo = pers_buta_huruf_melted[
+    pers_buta_huruf_melted["provinsi"] == "INDONESIA"
+]
+ax = sns.lineplot(
+    x="tahun",
+    y="persentase",
+    data=pers_buta_huruf_indo,
+    marker="o",
+)
+ax.xaxis.set_major_locator(mdates.YearLocator())
+ax.xaxis.set_ticklabels(
+    [""]
+    + sorted(
+        pers_buta_huruf_indo.tahun.dt.strftime("%Y-%b")
     )
-    # create a seperator before and after 2020
+)
+
+# create a seperator before and after 2020
    plt.axvline(x=pd.to_datetime("2015-03-02"), color="red", linestyle="--")
 fill_thresholds_min, fill_thresholds_max = (
     np.min(ax.get_yticks()) - 0.2,
