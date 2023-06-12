@@ -64,11 +64,11 @@ labor_area, labor_gender = st.tabs(["Berdasarkan Area", "Berdasarkan Jenis Kelam
 
 
 def plot_labor_area(area, ax):
-    pers_anak_kerja_tmp = pers_anak_kerja[pers_anak_kerja["provinsi"] == area]
-    sns.lineplot(x="tahun", y="persentase", data=pers_anak_kerja_tmp, marker="o", ax=ax)
+    pers_buta_huruf_tmp = pers_buta_huruf[pers_buta_huruf["provinsi"] == area]
+    sns.lineplot(x="tahun", y="persentase", data=pers_buta_huruf_tmp, marker="o", ax=ax)
     ax.xaxis.set_major_locator(mdates.YearLocator())
     ax.xaxis.set_ticklabels(
-        [""] + sorted(pers_anak_kerja_tmp.tahun.dt.strftime("%Y-%b"))
+        [""] + sorted(pers_buta_huruf_tmp.tahun.dt.strftime("%Y-%b"))
     )
     # create a seperator before and after 2020
     plt.axvline(x=pd.to_datetime("2020-03-02"), color="red", linestyle="--")
@@ -100,7 +100,7 @@ def plot_labor_area(area, ax):
         style="italic",
     )
     plt.ylim(fill_thresholds_min, fill_thresholds_max)
-    for i, row in pers_anak_kerja_tmp.iterrows():
+    for i, row in pers_buta_huruf_tmp.iterrows():
         ax.text(
             row["tahun"], row["persentase"] + 0.05, row["persentase"], style="italic"
         )
@@ -117,12 +117,12 @@ def plot_labor_area(area, ax):
 
 
 with labor_area:
-    pers_anak_kerja = pd.read_csv("data/child_labor_cleaned/pers_anak_kerja.csv")
-    pers_anak_kerja["tahun"] = pd.to_datetime(pers_anak_kerja["tahun"])
+    pers_buta_huruf = pd.read_csv("data/buta_labor_cleaned/buta_huruf_gender.csv")
+    pers_buta_huruf["tahun"] = pd.to_datetime(pers_buta_huruf["tahun"])
     area = st.selectbox(
         "Pilih Area",
-        pers_anak_kerja.provinsi.unique(),
-        index=len(pers_anak_kerja.provinsi.unique()) - 1,
+        pers_buta_huruf.provinsi.unique(),
+        index=len(pers_buta_huruf.provinsi.unique()) - 1,
     )
 
     fig, ax = plt.subplots(figsize=(10, 5))
@@ -150,23 +150,23 @@ with labor_area:
         st.pyplot(fig)
 
 with labor_gender:
-    pers_anak_kerja_gender = pd.read_csv(
+    pers_buta_huruf_gender = pd.read_csv(
         "data/buta_labor_cleaned/buta_huruf_gender.csv"
     )
-    pers_anak_kerja_gender["tahun"] = pd.to_datetime(
-        pers_anak_kerja_gender["tahun"].astype(str)
+    pers_buta_huruf_gender["tahun"] = pd.to_datetime(
+        pers_buta_huruf_gender["tahun"].astype(str)
     )
-    pers_anak_kerja_laki = pers_anak_kerja_gender[
-        pers_anak_kerja_gender["gender"] == "Laki-laki"
+    pers_buta_huruf_laki = pers_buta_huruf_gender[
+        pers_buta_huruf_gender["gender"] == "Laki-laki"
     ]
-    pers_anak_kerja_perempuan = pers_anak_kerja_gender[
-        pers_anak_kerja_gender["gender"] == "Perempuan"
+    pers_buta_huruf_perempuan = pers_buta_huruf_gender[
+        pers_buta_huruf_gender["gender"] == "Perempuan"
     ]
     fig, ax = plt.subplots(figsize=(10, 5))
     sns.lineplot(
         x="tahun",
         y="persentase",
-        data=pers_anak_kerja_laki,
+        data=pers_buta_huruf_laki,
         marker="o",
         color="b",
         ax=ax,
@@ -174,14 +174,14 @@ with labor_gender:
     sns.lineplot(
         x="tahun",
         y="persentase",
-        data=pers_anak_kerja_perempuan,
+        data=pers_buta_huruf_perempuan,
         marker="o",
         color="r",
         ax=ax,
     )
     ax.xaxis.set_major_locator(mdates.YearLocator())
     ax.xaxis.set_ticklabels(
-        [""] + sorted(pers_anak_kerja_laki.tahun.dt.strftime("%Y-%b"))
+        [""] + sorted(pers_buta_huruf_laki.tahun.dt.strftime("%Y-%b"))
     )
     # create a seperator before and after 2020
     plt.axvline(x=pd.to_datetime("2020-03-02"), color="red", linestyle="--")
@@ -214,7 +214,7 @@ with labor_gender:
     )
     plt.ylim(fill_thresholds_min, fill_thresholds_max)
     plt.legend(["Laki-laki", "Perempuan"])
-    for i, row in pers_anak_kerja_laki.iterrows():
+    for i, row in pers_buta_huruf_laki.iterrows():
         ax.text(
             row["tahun"],
             row["persentase"] + 0.05,
@@ -222,7 +222,7 @@ with labor_gender:
             style="italic",
             color="b",
         )
-    for i, row in pers_anak_kerja_perempuan.iterrows():
+    for i, row in pers_buta_huruf_perempuan.iterrows():
         ax.text(
             row["tahun"],
             row["persentase"] + 0.05,
@@ -251,8 +251,8 @@ st.write(
 )
 
 fig, ax = plt.subplots(figsize=(10, 3))
-pers_anak_kerja_rank = pd.read_csv("data/child_labor_cleaned/pers_anak_kerja_rank.csv")
-sns.barplot(x="provinsi", y="persentase", data=pers_anak_kerja_rank, palette="Blues_d")
+pers_buta_huruf_rank = pd.read_csv("data/child_labor_cleaned/pers_buta_huruf_rank.csv")
+sns.barplot(x="provinsi", y="persentase", data=pers_buta_huruf_rank, palette="Blues_d")
 plt.xticks(rotation=90)
 plt.title("Peringkat Daerah Anak Usia 10-17 Tahun Yang Bekerja 2021")
 plt.ylabel("%")
@@ -374,15 +374,15 @@ with kekerasan_anak:
     )
     st.pyplot(fig)
     kekerasan_desc_col, kekerasan_corr_col = st.columns([4, 1])
-    pers_anak_kerja_indo = pers_anak_kerja[
-        pers_anak_kerja["provinsi"] == "INDONESIA"
+    pers_buta_huruf_indo = pers_buta_huruf[
+        pers_buta_huruf["provinsi"] == "INDONESIA"
     ].sort_values(by="tahun")
-    pers_anak_kerja_indo["tahun"] = pers_anak_kerja_indo.tahun.dt.year
-    pers_anak_kerja_indo["tahun"] = pd.to_datetime(
-        pers_anak_kerja_indo["tahun"].astype(str)
+   pers_buta_huruf_indo["tahun"] = pers_buta_huruf_indo.tahun.dt.year
+    pers_buta_huruf_indo["tahun"] = pd.to_datetime(
+        pers_buta_huruf_indo["tahun"].astype(str)
     )
-    pers_anak_kerja_indo.set_index("tahun", inplace=True)
-    kekerasan_corr = pers_anak_kerja_indo["persentase"].corr(
+    pers_buta_huruf_indo.set_index("tahun", inplace=True)
+    kekerasan_corr = pers_buta_huruf_indo["persentase"].corr(
         kekerasan_anak_per_tahun["total"]
     )
 
