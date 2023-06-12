@@ -60,8 +60,7 @@ st.write(
 st.markdown(
     "<h3>Persentase anak usia 10 tahun ke atas buta huruf</h3>", unsafe_allow_html=True
 )
-pers_buta_huruf_indo = pers_buta_huruf_melted[pers_buta_huruf_melted["provinsi"] == "INDONESIA"
-]
+pers_buta_huruf_indo = pers_buta_huruf_melted[pers_buta_huruf_melted["provinsi"] == "INDONESIA"]
 ax = sns.lineplot(
     x="tahun",
     y="persentase",
