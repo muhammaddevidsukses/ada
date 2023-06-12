@@ -66,27 +66,27 @@ area = st.selectbox(
 anak_buta.columns.unique(),
 index=len(anak_buta.columns.unique()) - 1,
     )
-    fig, ax = plt.subplots(figsize=(10, 5))
-    anak_buta[area].plot(marker="o", ax=ax)
-    # create a seperator before and after 2020
-    plt.axvline(x="206", color="red", linestyle="--")
-    fill_thresholds_min, fill_thresholds_max = (
-        np.min(ax.get_yticks()) - 0.2,
-        np.max(ax.get_yticks()) + 0.2,
+fig, ax = plt.subplots(figsize=(10, 5))
+anak_buta[area].plot(marker="o", ax=ax)
+# create a seperator before and after 2020
+plt.axvline(x="206", color="red", linestyle="--")
+fill_thresholds_min, fill_thresholds_max = (
+np.min(ax.get_yticks()) - 0.2,
+np.max(ax.get_yticks()) + 0.2,
     )
-    ax.fill_between(
-        anak_buta.index[:3],
-        fill_thresholds_min,
-        fill_thresholds_max,
-        color="green",
-        alpha=0.2,
+ax.fill_between(
+anak_buta.index[:3],
+fill_thresholds_min,
+fill_thresholds_max,
+color="green",
+alpha=0.2,
     )
-    ax.fill_between(
-        anak_buta.index[2:],
-        fill_thresholds_min,
-        fill_thresholds_max,
-        color="red",
-        alpha=0.2,
+ax.fill_between(
+anak_buta.index[2:],
+fill_thresholds_min,
+fill_thresholds_max,
+color="red",
+alpha=0.2,
     )
     ax.text("2017", fill_thresholds_max - 0.15, "sesusah", style="italic")
     ax.text("2016", fill_thresholds_max - 0.15, "Sebelum ", style="italic")
