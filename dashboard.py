@@ -84,6 +84,13 @@ fill_thresholds_max,
 color="green",
 alpha=0.2,
     )
+ax.fill_between(
+anak_buta.index[:2],
+fill_thresholds_min,
+fill_thresholds_max,
+color="red",
+alpha=0.2,
+    )
 
 ax.text("2017", fill_thresholds_max - 0.15, "sesusah", style="italic")
 ax.text("2016", fill_thresholds_max - 0.15, "Sebelum ", style="italic")
