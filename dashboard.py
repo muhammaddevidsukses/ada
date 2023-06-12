@@ -178,10 +178,9 @@ col1, col2 = st.columns([3, 2])
 fig, ax = plt.subplots(figsize=(7, 4))
 
 #grafik batang
+angka_buta_huruf = pd.read_csv("data/child_labor_cleaned/angka_buta_huruf.csv")
 
-angka_buta_huruf = pd.read_csv(
-    "data/child_labor_cleaned/angka_buta_huruf.csv"
-)
+
 angka_buta_huruf.set_index("tahun", inplace=True)
 angka_buta_huruf.plot(kind="bar", ax=ax)
 plt.ylabel("%")
