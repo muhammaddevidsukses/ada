@@ -58,19 +58,51 @@ st.write(
 )
 
 st.markdown(
-    "<h3>Persentase anak usia 10 tahun ke atas buta huruf</h3>", unsafe_allow_html=True
-)
-
+    "<h3>Persentase anak usia 10 tahun ke atas buta huruf</h3>", unsafe_allow_html=True)
 fig, ax = plt.subplots(figsize=(10, 3))
-pers_buta_huruf_provinsi = pd.read_csv("data/buta_labor/cleaned/pers_buta_huruf_provinsi_rank.csv")
-sns.barplot(x="provinsi", y="persentase", data=pers_buta_huruf_provinsi, palette="Blues_d")
+pers_buta_huruf_provinsi = pd.read_csv("data/child_labor_cleaned/pers_buta_huruf_provinsi_rank.csv")
+sns.barplot(x="provinsi", y="persentase", data=pers_buta_huruf_provinsi_rank, palette="Blues_d")
 plt.xticks(rotation=90)
-plt.show()
+plt.title("Peringkat Provinsi Anak Usia 10 yang buta huruf")
+plt.ylabel("%")
+for i in ax.containers:
+    ax.bar_label(i, fontsize=8)
+plt.annotate(
+    "Sumber: Badan Pusat Statistik (BPS)",
+    (0, 0),
+    (0, -150),
+    fontsize=10,
+    xycoords="axes fraction",
+    textcoords="offset points",
+    va="top",
+)
+st.pyplot(fig)
 
-
+col1, col2 = st.columns([3, 2])
+fig, ax = plt.subplots(figsize=(7, 4))
+angka_buta_anak_2016 = pd.read_csv(
+    "data/child_labor_cleaned/pers_buta_huruf_provinsi_rank.csv"
+)
+angka_buta_anak_2016.set_index("tahun", inplace=True)
+angka_buta_anak_2016.plot(kind="bar", ax=ax)
+plt.ylabel("%")
+for i in ax.containers:
+    ax.bar_label(
+        i,
+    )
+plt.annotate(
+    "Sumber: Badan Pusat Statistik (BPS)",
+    (0, 0),
+    (0, -50),
+    fontsize=10,
+    xycoords="axes fraction",
+    textcoords="offset points",
+    va="top",
+)
 col1.pyplot(fig)
+
 col2.markdown(
-    "<h5>Persentase Pekerja Anak Usia 10-17 Tahun Yang Bekerja Berdasarkan Kelompok Umur</h5>",
+    "<h5>Persentase Pekerja Anak Usia 10 yang buta huruf</h5>",
     unsafe_allow_html=True,
 )
 col2.write(
