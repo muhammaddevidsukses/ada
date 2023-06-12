@@ -57,8 +57,8 @@ st.markdown(
     "<h3>Persentase anak usia 10 tahun ke atas buta huruf</h3>", unsafe_allow_html=True)
 
 labor_area, labor_gender = st.tabs(["Berdasarkan Area", "Berdasarkan Jenis Kelamin"])
-with labor_area:
-    anak_buta = pd.read_csv("data/buta_labor_cleaned/anak_buta.csv")
+
+with labor_area:anak_buta = pd.read_csv("data/buta_labor_cleaned/anak_buta.csv")
     anak_buta["tahun"] = pd.to_datetime(anak_buta["tahun"].astype(str))
     anak_buta.set_index("tahun", inplace=True)
     area = st.selectbox(
