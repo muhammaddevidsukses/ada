@@ -88,7 +88,10 @@ alpha=0.2,
 ax.text("2017", fill_thresholds_max - 0.15, "sesusah", style="italic")
 ax.text("2016", fill_thresholds_max - 0.15, "Sebelum ", style="italic")
 for i, value in enumerate(anak_buta[area]):
-ax.text(pers_buta_huruf.index[i],value+0.05,value,style="italic")
+ax.text(
+    pers_buta_huruf.index[i],
+    value+0.05,
+    value,style="italic")
 plt.ylabel("%")
 plt.annotate(
 "Sumber: Badan Pusat Statistik (BPS)",
