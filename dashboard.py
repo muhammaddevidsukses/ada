@@ -155,7 +155,27 @@ st.pyplot(fig)
 
 
 st.markdown("<h5>Persentase Anak Usia 10 yang buta huruf</h5>", unsafe_allow_html=True)
+fig, ax = plt.subplots(figsize=(10, 3))
+buta_huruf_rank = pd.read_csv("data/buta_labor_cleaned/pers_buta_huruf_provinsi_rank.csv")
+sns.barplot(x="provinsi", y="persentase", data=buta_huruf_rank, palette="Blues_d")
+plt.xticks(rotation=90)
+plt.title("Peringkat Provinsi Anak Usia 10 yang Buta Huruf Terbanyak")
+plt.ylabel("%")
+for i in ax.containers:
+    ax.bar_label(i, fontsize=8)
+plt.annotate(
+    "Sumber: Badan Pusat Statistik (BPS)",
+    (0, 0),
+    (0, -150),
+    fontsize=10,
+    xycoords="axes fraction",
+    textcoords="offset points",
+    va="top",
+)
+st.pyplot(fig)
 
+col1, col2 = st.columns([3, 2])
+fig, ax = plt.subplots(figsize=(7, 4))
 
 st.markdown("<h3>Sisi Gelap buta huruf Anak...</h3>", unsafe_allow_html=True)
 st.write(
