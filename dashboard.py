@@ -59,7 +59,7 @@ st.markdown(
 labor_area, labor_gender = st.tabs(["Berdasarkan Area", "Berdasarkan Jenis Kelamin"])
 
 with labor_area:
-    pers_buta_huruf = pd.read_csv("data/buta_labor_cleaned/buta_huruf_gender.csv")
+    pers_buta_huruf = pd.read_csv("data/buta_labor_cleaned/anak_buta.csv")
     pers_buta_huruf["tahun"] = pd.to_datetime(pers_buta_huruf["tahun"].astype(str))
     pers_buta_huruf.set_index("tahun", inplace=True)
     area = st.selectbox(
