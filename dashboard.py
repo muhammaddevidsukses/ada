@@ -59,72 +59,72 @@ labor_area, labor_jenis = st.tabs(["Berdasarkan Area","Berdasarkan Jenis Kelamin
 
 with labor_area:
     anak_buta = pd.read_csv("data/buta_labor_cleaned/anak_buta.csv")
-anak_buta["tahun"] = pd.to_datetime(anak_buta["tahun"].astype(str))
-anak_buta.set_index("tahun", inplace=True)
-area = st.selectbox(
-"Pilih Area",
-anak_buta.columns.unique(),
-index=len(anak_buta.columns.unique()) - 1,
+    anak_buta["tahun"] = pd.to_datetime(anak_buta["tahun"].astype(str))
+    anak_buta.set_index("tahun", inplace=True)
+    area = st.selectbox(
+    "Pilih Area",
+    anak_buta.columns.unique(),
+    index=len(anak_buta.columns.unique()) - 1,
     )
-fig, ax = plt.subplots(figsize=(10, 5))
-anak_buta[area].plot(marker="o", ax=ax)
-# create a seperator before and after 2016
-plt.axvline(
+    fig, ax = plt.subplots(figsize=(10, 5))
+    anak_buta[area].plot(marker="o", ax=ax)
+    # create a seperator before and after 2016
+    plt.axvline(
     x="2015",
     color="red",
     linestyle="--")
-fill_thresholds_min, fill_thresholds_max = (
-np.min(ax.get_yticks()) - 0.2,
-np.max(ax.get_yticks()) + 0.2,
+    fill_thresholds_min, fill_thresholds_max = (
+    np.min(ax.get_yticks()) - 0.2,
+    np.max(ax.get_yticks()) + 0.2,
     )
-ax.fill_between(
-anak_buta.index[:3],
-fill_thresholds_min,
-fill_thresholds_max,
-color="green",
-alpha=0.2,
+    ax.fill_between(
+    anak_buta.index[:3],
+    fill_thresholds_min,
+    fill_thresholds_max,
+    color="green",
+    alpha=0.2,
     )
-ax.fill_between(
-anak_buta.index[:2],
-fill_thresholds_min,
-fill_thresholds_max,
-color="red",
-alpha=0.2,
+    ax.fill_between(
+    anak_buta.index[:2],
+    fill_thresholds_min,
+    fill_thresholds_max,
+    color="red",
+    alpha=0.2,
     )
 
-ax.text("2016", fill_thresholds_max - 0.15, "sesusah", style="italic")
-ax.text("2014", fill_thresholds_max - 0.15, "Sebelum ", style="italic")
-for i, value in enumerate(anak_buta[area]):
+    ax.text("2016", fill_thresholds_max - 0.15, "sesusah", style="italic")
+    ax.text("2014", fill_thresholds_max - 0.15, "Sebelum ", style="italic")
+    for i, value in enumerate(anak_buta[area]):
     ax.text(
-   anak_buta.index[i],
+        anak_buta.index[i],
     value+0.05,
     value,style="italic")
-plt.ylabel("%")
-plt.annotate(
-"Sumber: Badan Pusat Statistik (BPS)",
-(0, 0),
-(0, -35),
-fontsize=10,
-xycoords="axes fraction",
-textcoords="offset points",
-va="top",
+    plt.ylabel("%")
+    plt.annotate(
+    "Sumber: Badan Pusat Statistik (BPS)",
+    (0, 0),
+    (0, -35),
+    fontsize=10,
+    xycoords="axes fraction",
+    textcoords="offset points",
+    va="top",
     )
-st.pyplot(fig)
+    st.pyplot(fig)
 with labor_jenis:
     anak_buta_gender = pd.read_csv("data/buta_labor_cleaned/pers_anak_buta_gender.csv")
-anak_buta_gender["tahun"] = pd.to_datetime(anak_buta_gender["tahun"].astype(str))
-anak_buta_gender.set_index("tahun", inplace=True)
-fig, ax = plt.subplots(figsize=(10, 5))
-anak_buta_gender["Laki-laki"].plot(marker="o", color="b", ax=ax)
-anak_buta_gender["Perempuan"].plot(marker="o", color="r", ax=ax)
-# create a seperator before and after 2016
-plt.axvline(x="2015", color="red", linestyle="--")
-fill_thresholds_min, fill_thresholds_max = (
-np.min(ax.get_yticks()) - 0.2,
-np.max(ax.get_yticks()) + 0.2,
+    anak_buta_gender["tahun"] = pd.to_datetime(anak_buta_gender["tahun"].astype(str))
+    anak_buta_gender.set_index("tahun", inplace=True)
+    fig, ax = plt.subplots(figsize=(10, 5))
+    anak_buta_gender["Laki-laki"].plot(marker="o", color="b", ax=ax)
+    anak_buta_gender["Perempuan"].plot(marker="o", color="r", ax=ax)
+    # create a seperator before and after 2016
+    plt.axvline(x="2015", color="red", linestyle="--")
+    fill_thresholds_min, fill_thresholds_max = (
+    np.min(ax.get_yticks()) - 0.2,
+    np.max(ax.get_yticks()) + 0.2,
     )
-ax.fill_between(
-anak_buta.index[:3],
+    ax.fill_between(
+    anak_buta.index[:3],
         fill_thresholds_min,
         fill_thresholds_max,
         color="green",
@@ -132,25 +132,25 @@ anak_buta.index[:3],
 
 
 
-ax.legend(["Laki-laki", "Perempuan"])
-# create text top left
-ax.text("2015", 3.6, "sesudah", style="italic")
-ax.text("2014", 3.6, "Sebelum ", style="italic")
-for i, value in enumerate(anak_buta_gender["Laki-laki"]):ax.text(anak_buta.index[i], value + 0.05, value, style="italic", color="blue"
+    ax.legend(["Laki-laki", "Perempuan"])
+    # create text top left
+    ax.text("2015", 3.6, "sesudah", style="italic")
+    ax.text("2014", 3.6, "Sebelum ", style="italic")
+    for i, value in enumerate(anak_buta_gender["Laki-laki"]):ax.text(anak_buta.index[i], value + 0.05, value, style="italic", color="blue"
         )
-for i, value in enumerate(anak_buta_gender["Perempuan"]):ax.text(anak_buta.index[i], value - 0.15, value, style="italic", color="red"
+    for i, value in enumerate(anak_buta_gender["Perempuan"]):ax.text(anak_buta.index[i], value - 0.15, value, style="italic", color="red"
         )
-plt.ylabel("%")
-plt.annotate(
-"Sumber: Badan Pusat Statistik (BPS)",
-(0, 0),
-(0, -35),
-fontsize=10,
-xycoords="axes fraction",
-textcoords="offset points",
-va="top",
+    plt.ylabel("%")
+    plt.annotate(
+    "Sumber: Badan Pusat Statistik (BPS)",
+    (0, 0),
+    (0, -35),
+    fontsize=10,
+    xycoords="axes fraction",
+    textcoords="offset points",
+    va="top",
     )
-st.pyplot(fig)
+    st.pyplot(fig)
 
 
 st.markdown("<h5>Persentase Anak Usia 10 yang buta huruf</h5>", unsafe_allow_html=True)
