@@ -55,7 +55,7 @@ st.write(
 st.markdown(
     "<h3>Persentase anak usia 10 tahun ke atas buta huruf</h3>", unsafe_allow_html=True)
 
-labor_area, labor_gender = st.tabs(["Berdasarkan Area", "Berdasarkan Jenis Kelamin"])
+labor_area, labor_jenis = st.tabs(["Berdasarkan Area","Berdasarkan Jenis Kelamin"])
 
 with labor_area:
     anak_buta = pd.read_csv("data/buta_labor_cleaned/anak_buta.csv")
@@ -110,7 +110,7 @@ textcoords="offset points",
 va="top",
     )
 st.pyplot(fig)
-with labor_gender:
+with labor_jenis:
     anak_buta_gender = pd.read_csv("data/buta_labor_cleaned/pers_anak_buta_gender.csv")
 anak_buta_gender["tahun"] = pd.to_datetime(anak_buta_gender["tahun"].astype(str))
 anak_buta_gender.set_index("tahun", inplace=True)
