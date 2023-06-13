@@ -199,10 +199,16 @@ plt.annotate(
 )
 col1.pyplot(fig)
 col2.markdown(
-    "<h5>Kenaikan Angka Buta Huruf Anak Usia 10-17 Tahun Yang Berdasarkan Kelompok Umur</h5>",
+    "<h5>Penurunan Angka Buta Huruf tiap Tahun Yang Berdasarkan Kelompok Umur</h5>",
     unsafe_allow_html=True,
 )
-
+col2.write(
+    """
+        Penurunan tertinggi terjadi pada usia **45 tahun ke atas (🔻 0.42% dari tahun 2015)**.
+        Angka buta huruf tertinggi pada usia **15-44** cukup tinggi **(⬆️ 4.88% di tahun 2014)**.
+        Sedangkan angka buta huruf pada usia **15 tahun** mengalami penurunan sedikit **(🔻0.1% dari tahun 2015)**.
+    """
+)
 st.markdown("<h3>Sisi Gelap buta huruf Anak...</h3>", unsafe_allow_html=True)
 st.write(
     """
