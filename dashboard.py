@@ -39,8 +39,7 @@ st.title("Penduduk Berumur 10 Tahun ke Atas yang Buta Huruf!")
 
 st.write(
     """
-        Setiap individu memiliki hak yang sama untuk mendapatkan pendidikan dan mengembangkan kemampuan literasi. Buta huruf dapat menghambat seseorang dalam m
-        engakses informasi, memperoleh pekerjaan yang layak, dan berpartisipasi secara aktif dalam masyarakat. Oleh karena itu, adalah tanggung jawab kita untuk 
+        Setiap individu memiliki hak yang sama untuk mendapatkan pendidikan dan mengembangkan kemampuan literasi. Buta huruf dapat menghambat seseorang dalam mengakses informasi, memperoleh pekerjaan yang layak, dan berpartisipasi secara aktif dalam masyarakat. Oleh karena itu, adalah tanggung jawab kita untuk 
         memastikan bahwa penduduk berumur 10 tahun ke atas yang masih buta huruf mendapatkan kesempatan yang setara untuk belajar.
     """
 )
@@ -200,7 +199,7 @@ plt.annotate(
 )
 col1.pyplot(fig)
 col2.markdown(
-    "<h5>Kenaikan Angka Pekerja Anak Usia 10-17 Tahun Yang Bekerja Berdasarkan Kelompok Umur</h5>",
+    "<h5>Kenaikan Angka Buta Huruf Anak Usia 10-17 Tahun Yang Berdasarkan Kelompok Umur</h5>",
     unsafe_allow_html=True,
 )
 
