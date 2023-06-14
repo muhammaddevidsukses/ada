@@ -154,8 +154,8 @@ fig, ax = plt.subplots(figsize=(10, 3))
 buta_huruf_rank = pd.read_csv("data/buta_labor_cleaned/pers_buta_huruf_provinsi_rank.csv")
 sns.barplot(x="provinsi", y="persentase", data=buta_huruf_rank, palette="Blues_d")
 plt.xticks(rotation=90)
-plt.title("Peringkat Provinsi Anak Usia 10 yang Buta Huruf Terbanyak")
-plt.ylabel("%")
+plt.title("Peringkat Provinsi Anak Usia 10 yang Buta Huruf Terbanyak dari masing - masing provinsi")
+plt.ylabel("% Penduduk tiap provinsi")
 for i in ax.containers:
     ax.bar_label(i, fontsize=8)
 plt.annotate(
