@@ -81,7 +81,7 @@ with labor_area:
     anak_buta.index[:3],
     fill_thresholds_min,
     fill_thresholds_max,
-    color="green",
+    color="",
     alpha=0.2,
     )
     ax.fill_between(
@@ -92,12 +92,12 @@ with labor_area:
     alpha=0.2,
     )
 
-    ax.text("2016", fill_thresholds_max - 0.15, "sesusah", style="italic")
-    ax.text("2014", fill_thresholds_max - 0.15, "Sebelum ", style="italic")
+    ax.text("2016", fill_thresholds_max - 0.15, "", style="italic")
+    ax.text("2014", fill_thresholds_max - 0.15, "", style="italic")
     for i, value in enumerate(anak_buta[area]):ax.text(anak_buta.index[i],
     value+0.05,
     value,style="italic")
-    plt.ylabel("%")
+    plt.ylabel("%Penduduk Provinsi")
     plt.annotate(
     "Sumber: Badan Pusat Statistik (BPS)",
     (0, 0),
@@ -132,13 +132,13 @@ with labor_jenis:
 
     ax.legend(["Laki-laki", "Perempuan"])
     # create text top left
-    ax.text("2015", 3.6, "sesudah", style="italic")
-    ax.text("2014", 3.6, "Sebelum ", style="italic")
+    ax.text("2015", 3.6, "", style="italic")
+    ax.text("2014", 3.6, "", style="italic")
     for i, value in enumerate(anak_buta_gender["Laki-laki"]):ax.text(anak_buta.index[i], value + 0.05, value, style="italic", color="blue"
         )
     for i, value in enumerate(anak_buta_gender["Perempuan"]):ax.text(anak_buta.index[i], value - 0.15, value, style="italic", color="red"
         )
-    plt.ylabel("%")
+    plt.ylabel("% Penduduk Indonesia")
     plt.annotate(
     "Sumber: Badan Pusat Statistik (BPS)",
     (0, 0),
@@ -181,7 +181,7 @@ angka_buta_huruf = pd.read_csv("data/buta_labor_cleaned/angka_buta_huruf.csv")
 
 angka_buta_huruf.set_index("tahun", inplace=True)
 angka_buta_huruf.plot(kind="bar", ax=ax)
-plt.ylabel("%")
+plt.ylabel("%Penduduk Indonesia")
 for i in ax.containers:
     ax.bar_label(
         i,
