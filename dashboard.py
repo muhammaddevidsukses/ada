@@ -124,7 +124,6 @@ with labor_jenis:
     anak_buta.index[:3],
         fill_thresholds_min,
         fill_thresholds_max,
-        color="green",
         alpha=0.2,)
 
 
