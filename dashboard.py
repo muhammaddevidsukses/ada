@@ -81,7 +81,6 @@ with labor_area:
     anak_buta.index[:3],
     fill_thresholds_min,
     fill_thresholds_max,
-    color="",
     alpha=0.2,
     )
     ax.fill_between(
@@ -97,7 +96,7 @@ with labor_area:
     for i, value in enumerate(anak_buta[area]):ax.text(anak_buta.index[i],
     value+0.05,
     value,style="italic")
-    plt.ylabel("%Penduduk Provinsi")
+    plt.ylabel(" % Penduduk Provinsi")
     plt.annotate(
     "Sumber: Badan Pusat Statistik (BPS)",
     (0, 0),
@@ -138,7 +137,7 @@ with labor_jenis:
         )
     for i, value in enumerate(anak_buta_gender["Perempuan"]):ax.text(anak_buta.index[i], value - 0.15, value, style="italic", color="red"
         )
-    plt.ylabel("% Penduduk Indonesia")
+    plt.ylabel(" % Penduduk Indonesia")
     plt.annotate(
     "Sumber: Badan Pusat Statistik (BPS)",
     (0, 0),
